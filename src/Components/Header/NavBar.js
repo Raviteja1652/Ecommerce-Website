@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Button, Container, Navbar } from "react-bootstrap";
+import { Button, Container, Navbar, Nav } from "react-bootstrap";
 import cartContext from "../../Store/cart-context";
 import './NavBar.css';
 
@@ -15,11 +15,11 @@ const NavBar = (props) => {
 
     return(
         <>
-            <Navbar bg="dark" expand='sm' variant="dark">
+            <Navbar bg="dark" expand='lg' variant="dark" fixed="top">
                 <Container>
-                    <Navbar.Brand href="/">Home</Navbar.Brand>
+                    <Navbar.Brand href="/home">Home</Navbar.Brand>
                     <Navbar.Brand href="/">Store</Navbar.Brand>
-                    <Navbar.Brand href="/">About</Navbar.Brand>
+                    <Navbar.Brand href="/about">About</Navbar.Brand>
                     <Button variant="info" onClick={clickHandler}>cart
                         <span className="badge">{numberOfItemsInCart}</span>
                     </Button>
