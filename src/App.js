@@ -1,14 +1,20 @@
+import { useState } from "react";
+import Cart from "./Components/Cart/Cart";
 import NavBar from "./Components/Header/NavBar";
 import ItemsList from "./Components/List/ItemsList";
-import { Button } from 'react-bootstrap';
+import ContextProvider from "./Store/ContextProvider";
 
 function App() {
+  const [isShown, setIsShown] = useState(false)
+  const cartEnableHandler = (bool) => {
+    setIsShown((prev) => !prev)
+  }
   return (
-    <div>
-      <NavBar />
+    <ContextProvider>
+      <NavBar cartOnClick={cartEnableHandler} />
       <ItemsList />
-      {/* <Button variant="primary"></Button> */}
-    </div>
+      {isShown && <Cart />}
+    </ContextProvider>
   );
 }
 

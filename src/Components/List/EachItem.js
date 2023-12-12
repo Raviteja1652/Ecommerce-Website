@@ -1,31 +1,25 @@
-import { Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Col, Row } from "react-bootstrap";
+import './ItemsList.css';
+import { useContext } from "react";
+import cartContext from "../../Store/cart-context";
 
 const EachItem = (props) => {
+    const ctx = useContext(cartContext)
+    const quantity = ''
+    const addToCartHandler = () => {
+        ctx.addToCart({...props, quantity: 1})
+    }
     return(
-        <Row xs={1} md={2} className="g-4">
-            
-            <Col>
-                <Card>
-                    <Card.Title>{props.title}</Card.Title>
-                    <Card.Img src={props.image} />
-                    <Card.Text>{`$${props.price}`}</Card.Text>
-                </Card>
-            </Col>
-            
-        </Row>
-
-        // <div>
-        //     <li>
-        //         <h4>{props.title}</h4>
-        //         <div>
-        //             <img src={props.image} alt=''></img>
-        //         </div>
-        //         <div>
-        //             <h3>{`$${props.price}`}</h3>
-        //         </div>
-                
-        //     </li>
-        // </div>
+        <div className="eachItem">
+            <h4>{props.title}</h4>
+            <div>
+                <img src={props.image} alt=''></img>
+            </div>
+            <div>
+                <h3>{`$${props.price}`}</h3>
+                <Button variant="primary" onClick={addToCartHandler}>Add to Cart</Button>
+            </div>
+        </div>
     );
 };
 

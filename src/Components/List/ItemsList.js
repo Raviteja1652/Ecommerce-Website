@@ -34,13 +34,13 @@ const ItemsList = () => {
     />)
 
     return(
-        <section className="list">
-            <div>
-                <ul>
+        
+            <div className="list">
+                
                     {listOfItems}
-                </ul>
+                
             </div>
-        </section>
+        
     )
 };
 
