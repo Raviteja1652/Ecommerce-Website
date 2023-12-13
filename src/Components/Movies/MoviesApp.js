@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import AddMovie from './AddMovie';
 
 import MoviesList from './MoviesList';
 import './App.css';
@@ -13,21 +14,24 @@ function MoviesApp() {
     setIsLoading(true)
     setError(null)
     try {
-      const response = await fetch('https://swapi.dev/api/films');
+      const response = await fetch('https://react-http-7e214-default-rtdb.firebaseio.com/movies.json');
       if (!response.ok){
         throw new Error('something went wrong...Retrying!')
       }
       const data = await response.json();
-      const transMovies = data.results.map(movie => {
-          return {
-            id: movie.episode_id,
-            title: movie.title,
-            releaseDate: movie.release_date,
-            openingText: movie.opening_crawl,
 
-          }
+      const loadedMovies = [];
+
+      for (const key in data) {
+        loadedMovies.push({
+          id: key,
+          title: data[key].title,
+          openingText: data[key].openingText,
+          releaseDate: data[key].releaseDate
         })
-        setMovies(transMovies)
+      }
+      
+        setMovies(loadedMovies)
     } catch (error) {
       setError(error.message);
       setRetryCount((prev) => prev+1)
@@ -48,10 +52,24 @@ function MoviesApp() {
     const cancelHandler = () => {
       setRetryCount(0)
       console.log('Stopped Fetching')
-    }
+    };
+
+    async function addMovieHandler(movie) {
+      const res = await fetch('https://react-http-7e214-default-rtdb.firebaseio.com/movies.json', {
+        method: 'POST',
+        body: JSON.stringify(movie),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      const data = await res.json();
+    };
       
   return (
     <React.Fragment>
+      <section>
+        <AddMovie onAddMovie={addMovieHandler} />
+      </section>
       <section>
         <button onClick={fetchMoviesHandler}>Fetch Movies</button>
       </section>
