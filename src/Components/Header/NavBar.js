@@ -17,6 +17,7 @@ const NavBar = (props) => {
         <>
             <Navbar bg="dark" expand='lg' variant="dark" fixed="top">
                 <Container>
+                    <Navbar.Brand href="/movies">Movies</Navbar.Brand>
                     <Navbar.Brand href="/home">Home</Navbar.Brand>
                     <Navbar.Brand href="/">Store</Navbar.Brand>
                     <Navbar.Brand href="/about">About</Navbar.Brand>

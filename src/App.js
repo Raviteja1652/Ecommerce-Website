@@ -6,6 +6,7 @@ import ContextProvider from "./Store/ContextProvider";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import About from "./Components/Header/About";
 import Home from "./Components/Header/Home";
+import MoviesApp from "./Components/Movies/MoviesApp";
 
 function App() {
   const [isShown, setIsShown] = useState(false);
@@ -14,6 +15,7 @@ function App() {
     {path: '/about', element: <About />},
     {path: '/', element: <ItemsList />},
     {path: '/home', element: <Home />},
+    {path: '/movies', element: <MoviesApp />},
   ]);
 
   const cartEnableHandler = (bool) => {
