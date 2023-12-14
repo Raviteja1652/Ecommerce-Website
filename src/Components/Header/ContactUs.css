@@ -1,0 +1,28 @@
+.styleClass {
+    margin: 1rem 0;
+}
+
+.styleClass label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.styleClass input {
+    display: block;
+    width: 100%;
+    font: inherit;
+    padding: 0.2rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.styleClass input:focus{
+  outline: none;
+  border-color: #230052;
+}
+
+.section {
+    margin-top: 12%;
+}
