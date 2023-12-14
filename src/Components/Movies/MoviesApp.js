@@ -64,6 +64,17 @@ function MoviesApp() {
       })
       const data = await res.json();
     };
+
+    const deleteMovieHandler = async (id) => {
+      const res = await fetch(`https://react-http-7e214-default-rtdb.firebaseio.com/movies/${id}.json`, {
+        method: 'Delete',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const data = await res.json();
+      console.log(data)
+    }
       
   return (
     <React.Fragment>
@@ -74,7 +85,7 @@ function MoviesApp() {
         <button onClick={fetchMoviesHandler}>Fetch Movies</button>
       </section>
       <section>
-        {!isLoading && movies.length >0 && <MoviesList movies={movies} />}
+        {!isLoading && movies.length >0 && <MoviesList onDelete={deleteMovieHandler} movies={movies} />}
         {!isLoading && movies.length === 0 && !error && <p>No Movies Found</p>}
         {isLoading && <p>Loading Data. Please wait...</p>}
         {!isLoading && error && <p>{error} {' '} 
