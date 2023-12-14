@@ -2,18 +2,27 @@ import { Button, Card, Col, Row } from "react-bootstrap";
 import './ItemsList.css';
 import { useContext } from "react";
 import cartContext from "../../Store/cart-context";
+import { Link } from 'react-router-dom'
 
 const EachItem = (props) => {
     const ctx = useContext(cartContext)
     const quantity = ''
     const addToCartHandler = () => {
-        ctx.addToCart({...props, quantity: 1})
-    }
+        const existingProductIndex = ctx.items.findIndex(item => item.id === props.id)
+        if(existingProductIndex >= 0){
+            ctx.updateItem(existingProductIndex)
+        } else {
+            ctx.addToCart({...props, quantity: 1})
+        }
+    };
+    
     return(
         <div className="eachItem">
             <h4>{props.title}</h4>
             <div>
-                <img src={props.image} alt=''></img>
+                <Link to={`/products/${props.title}`}>
+                    <img src={props.image} alt=''></img>
+                </Link>
             </div>
             <div>
                 <h3>{`$${props.price}`}</h3>

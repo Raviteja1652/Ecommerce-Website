@@ -3,11 +3,15 @@ import Cart from "./Components/Cart/Cart";
 import NavBar from "./Components/Header/NavBar";
 import ItemsList from "./Components/List/ItemsList";
 import ContextProvider from "./Store/ContextProvider";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import About from "./Components/Header/About";
 import Home from "./Components/Header/Home";
 import MoviesApp from "./Components/Movies/MoviesApp";
 import ContactUs from "./Components/Header/ContactUs";
+import Colors from "./Components/ProductPages/Colors";
+import Black from "./Components/ProductPages/Black";
+import Yellow from "./Components/ProductPages/Yellow";
+import Blue from "./Components/ProductPages/Blue";
 
 function App() {
   const [isShown, setIsShown] = useState(false);
@@ -32,24 +36,29 @@ function App() {
     console.log(convertedData)
   }
 
-  const router = createBrowserRouter([
-    {path: '/about', element: <About />},
-    {path: '/', element: <ItemsList />},
-    {path: '/home', element: <Home />},
-    {path: '/movies', element: <MoviesApp />},
-    {path: '/contact', element: <ContactUs onAddDetail={addDetailHandler} />},
-  ]);
-
   const cartEnableHandler = (bool) => {
     setIsShown((prev) => !prev)
   };
 
   return (
     <ContextProvider>
-      <RouterProvider router={router} />
-      <NavBar cartOnClick={cartEnableHandler} />
-      
-      {isShown && <Cart />}
+      <Router>
+        <NavBar cartOnClick={cartEnableHandler} />
+
+        <Routes>
+          <Route path="/about" element={<About />} />
+          <Route path="/" element={<ItemsList />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/movies" element={<MoviesApp />} />
+          <Route path="/contact" element={<ContactUs onAddDetail={addDetailHandler} />} />
+          <Route path="/products/Colors" element={<Colors />} />
+          <Route path="/products/Black and white Colors" element={<Black />} />
+          <Route path="/products/Yellow and Black Colors" element={<Yellow />} />
+          <Route path="/products/Blue Color" element={<Blue />} />
+        </Routes>
+
+        {isShown && <Cart />}
+      </Router>
     </ContextProvider>
   );
 }
