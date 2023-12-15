@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom'
 
 const EachItem = (props) => {
     const ctx = useContext(cartContext)
+    const isLoggedIn = ctx.isLoggedIn
+    // console.log('working')
+    // console.log(isLoggedIn)
     const quantity = ''
     const addToCartHandler = () => {
         const existingProductIndex = ctx.items.findIndex(item => item.id === props.id)
@@ -18,7 +21,7 @@ const EachItem = (props) => {
     
     return(
         <div className="eachItem">
-            <h4>{props.title}</h4>
+            <h4 className="title">{props.title}</h4>
             <div>
                 <Link to={`/products/${props.title}`}>
                     <img src={props.image} alt=''></img>

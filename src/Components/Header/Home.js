@@ -19,8 +19,10 @@ const listArr = [
 
 const Home = () => {
     const lists = listArr.map(list => (
-        <li className="tour-item">{list.date} {list.place} {list.specPlace}  
-            <Button variant="info">Get Tickets</Button>
+        <li className="tour-item"><div>{list.date}</div> 
+            <div>{list.place}</div>
+            <div>{list.specPlace}</div>
+            <Button variant="info" className="button">Get Tickets</Button>
         </li>
     ))
     return(

@@ -2,50 +2,144 @@
     position: fixed;
     top: 10%;
     right: 0;
-    width: 30%;
+    width: 40%;
     height: 90%;
-    background-color: #fff;
+    background-color: #9fa7b1;
     transition: right 0.3s ease-out;
     overflow-y: auto;
     border-radius: 12px;
 }
+
 .cart-container h2{
     text-align: center;
 }
 .cart-header {
     display: flex;
     font-weight: bold;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
 }
-.cart-item{
-    width:40%;
+  
+/* .cart-column {
+    flex: 1;
 }
-.cart-img{
-    width:80px;
-    border-radius:8%;
-    margin-right:20px;
+  
+.cart {
+    list-style: none;
+    padding: 0;
 }
-.cart-price{
-    width:20%;
-}
-.cart-quantity{
-    width:35%;
-}
-.cart-column{
+  
+.cart li {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid black;
-    margin-right: 1.5em;
-    padding-bottom: 10px;
-    margin-top: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+  
+.cart-image {
+    max-width: 50px;
+    max-height: 50px;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+  
+.cart-quantity input {
+    width: 30px;
+} */
+  
+/* .total-amount {
+    margin-top: 20px;
+    text-align: right;
+    font-weight: bold;
+} */
+
+.purchase-button {
+    position: fixed;
+    bottom: 6%;
+    left: 74%;
+    width: 30vh;
+    text-align: center;
+    font-size: larger;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+  
+.purchase-button:hover {
+    background-color: #0056b3;
 }
 
-.cart{
-    /* list-style: none;
-    margin: 0;
+.totalAmount {
+    position: fixed;
+    bottom: 18%;
+    right: 5%;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.item-header {
+ position: fixed;
+ right: 28%;
+ top: 25%;
+ font-family:'Times New Roman', Times, serif;
+}
+.price-header {
+    position: fixed;
+    right: 12%;
+    top: 25%;
+    font-family:'Times New Roman', Times, serif;
+}
+.quantity-header {
+    position: fixed;
+    right: 4%;
+    top: 25%;
+    font-family:'Times New Roman', Times, serif;
+}
+.cart-image {
+    max-width: 55px;
+    max-height: 57px;
+    margin-right: 10px;
+    border-radius: 4px;
+    
+}
+
+.cart li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+.cart {
+    list-style: none;
     padding: 0;
-    max-height: 20rem;
-    overflow: auto; */
-    padding: 20px;
-    /* justify-content: space-between;
-    align-items: center; */
+    position: relative;
+    top: 8%;
+}
+.cart-name {
+    font-family:'Times New Roman', Times, serif;
+    font-size: 8vh;
+
+}
+.title-list {
+    position: fixed;
+    left: 67%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
+.price-list {
+    position: fixed;
+    right: 12%;
+}
+.quantity-list {
+    position: fixed;
+    right: 8%;
+    font-weight: bold;
+    font-size: larger;
 }

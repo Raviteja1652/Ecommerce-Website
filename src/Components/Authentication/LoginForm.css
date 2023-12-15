@@ -1,9 +1,10 @@
 .auth {
     margin: 3rem auto;
+    margin-top: 9%;
     width: 95%;
     max-width: 25rem;
     border-radius: 6px;
-    background-color: #38015c;
+    background-color: #5b86b1;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
     padding: 1rem;
     text-align: center;
@@ -47,15 +48,15 @@
     cursor: pointer;
     font: inherit;
     color: white;
-    background-color: #9f5ccc;
-    border: 1px solid #9f5ccc;
+    background-color: #232263;
+    border: 1px solid #433883;
     border-radius: 4px;
     padding: 0.5rem 2.5rem;
 }
 
 .actions button:hover {
-    background-color: #873abb;
-    border-color: #873abb;
+    background-color: 1a0b6b;
+    border-color: #261f4d;
 }
 
 .actions .toggle {

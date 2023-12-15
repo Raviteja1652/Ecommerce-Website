@@ -1,0 +1,36 @@
+img {
+    height: 300px;
+    width: 280px;
+    border-radius: 50%;
+}
+.about {
+    margin: 5%;
+}
+.about h3 {
+    text-align: center;
+}
+
+.aligned {
+    display: flex;
+    align-items: center;
+}
+
+p{
+    padding: 10px;
+    font-size: 20px;
+    max-width: 65%;
+}
+
+.about-header {
+    height: 40vh;
+    background: #777;
+}
+
+.about-header h1 {
+    padding-top: 4%;
+    font-size: 100px;
+    display: block;
+    text-align: center;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+}

@@ -17,6 +17,30 @@
 .eachItem{
     padding: 40px;
     flex: 1 1 calc(50% - 16px);
-    border: 1px solid #b8a8a8;
-    background-color: rgb(252, 251, 251);
+    border: 1px solid #eeecec;
+    
+}
+
+.items-header {
+    height: 30vh;
+    background: #777;
+    
+}
+
+.items-header h1 {
+    padding-top: 4%;
+    font-size: 100px;
+    display: block;
+    text-align: center;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+}
+.music {
+    display: block;
+    margin: auto;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.title {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

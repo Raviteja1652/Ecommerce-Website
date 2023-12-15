@@ -26,8 +26,19 @@
 }
 
 .tour-item {
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
     margin: 5px 0;
     padding: 10px;
     /* align-self: center; */
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    width: 1000px;
+    padding-left: 30%;
+    text-decoration: underline;
+    
+}
+.button {
+    position: fixed;
+    right: 30%;
 }

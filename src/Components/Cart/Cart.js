@@ -5,50 +5,40 @@ import './Cart.css';
 import Modal from "../UI/Modal";
 import cartContext from "../../Store/cart-context";
 
-const cartElements = [
-    // {
-    //     title: 'Colors',
-    //     price: 100,
-    //     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-    //     quantity: 2,
-    // },
-    // {
-    //     title: 'Black and white Colors',
-    //     price: 50,
-    //     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-    //     quantity: 3,
-    // },
-    // {
-    //     title: 'Yellow and Black Colors',
-    //     price: 70,
-    //     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-    //     quantity: 1,
-    // }
-    ]
-
 const Cart = () => {
     const ctx = useContext(cartContext)
+    const totalPrice = ctx.items.reduce((acc, item) => {
+        return acc + item.price*item.quantity
+    }, 0);
+
     const cartItems = (
         <ul className="cart">
             {ctx.items.map(item => (
-                <li>{item.image}--{item.title}--{item.price}--{item.quantity}
-                    <Button variant="danger">Remove</Button>
+                <li key={item.id}>
+                    <div> <img src={item.image} className="cart-image" /> </div> 
+                    <h5 className="title-list">{item.title}</h5> 
+                    <h4 className="price-list"> {`$${(item.price)*(item.quantity)}`} </h4> 
+                    <div className="quantity-list"> {item.quantity} </div>
+                    <Button variant="danger" onClick={() => ctx.removeItems(item.id)}>Remove</Button>
                 </li>
             ))}
         </ul>
     )
     return(
         <div className="cart-container">
-            <h2>Cart</h2>
+            <h2 className="cart-name">Cart</h2>
             <div className="cart-header">
-                <h4 className="cart-item cart-column">Item</h4>
-                <h4 className="cart-price cart-column">Price</h4>
-                <h4 className="cart-quantity cart-column">Quantity</h4>
+                <h4 className="item-header">Item</h4>
+                <h4 className="price-header">Price</h4>
+                <h4 className="quantity-header">Quantity</h4>
             </div>
             {cartItems}
             <div>
-                <span>Total Amount</span>
+                <span className="totalAmount">Total Amount: ${totalPrice}</span>
             </div>
+            <footer>
+                <Button variant="info" className="purchase-button" onClick={() => ctx.purchaseItems()}>Purchase</Button>
+            </footer>
         </div>
     )
 };
