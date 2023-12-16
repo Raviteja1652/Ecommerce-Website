@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import cartContext from "./cart-context";
+import axios from "axios";
 
 const ContextProvider = props => {
     const initialToken = localStorage.getItem('token')
     const [token, setToken] = useState(initialToken)
-    const [products, setProducts] = useState([])
+    const [cartItems, setCartItems] = useState([])
+    const [products, setProducts] = useState(cartItems)
     // const userIsLoggedIn = !!token
     const [userIsLoggedIn, setUserIsLoggedIn] = useState(false)
+    const [mail, setMail] = useState('')
 
     const addItemToCartHandler = (item) => {
         setProducts([...products, item])
         // console.log(products)
+        axios.post(`https://crudcrud.com/api/eeebbc15f53f4861a8d4861b4e81dcb5/${mail}`, item).then(res => 
+            console.log(res.data)
+        ).catch(err => console.log(err))
     };
 
     const updateItemsHandler = (index) => {
@@ -24,6 +30,10 @@ const ContextProvider = props => {
         localStorage.setItem('token', token)
         setToken(token)
         setUserIsLoggedIn(true)
+    };
+    const logoutHandler = () => {
+        setUserIsLoggedIn(false);
+        localStorage.removeItem('token')
     }
     
     const removeItemFromCartHandler = (id) => {
@@ -49,7 +59,16 @@ const ContextProvider = props => {
         } else {
             alert('Please add some Products in the Cart')
         }
-        
+    };
+    const emailChangeHandler = (mailId) => {
+        setMail(mailId)
+    };
+    const onPageLoad = () => {
+        axios.get(`https://crudcrud.com/api/eeebbc15f53f4861a8d4861b4e81dcb5/${mail}`).then(res => {
+            setCartItems(res.data)
+            console.log(res.data)
+        }).catch(err => console.log(err))
+        console.log('res.data')
     }
 
     const contextItems = {
@@ -60,9 +79,11 @@ const ContextProvider = props => {
         token: token,
         isLoggedIn: userIsLoggedIn,
         login: loginHandler,
-        purchaseItems: purchaseItemsHandler
+        logout: logoutHandler,
+        purchaseItems: purchaseItemsHandler,
+        changeMail: emailChangeHandler,
+        onLoad: onPageLoad,
     }
-    console.log(contextItems.isLoggedIn)
 
     return(
         <cartContext.Provider value={contextItems}>{props.children}</cartContext.Provider>

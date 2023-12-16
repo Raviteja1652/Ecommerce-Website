@@ -18,6 +18,9 @@ const LoginForm = () => {
     const enteredEmail = emailRef.current.value
     const enteredPass = passRef.current.value
 
+    const changedEmail = (enteredEmail.replace('@', '')).replace('.', '').replace('.', '')
+    
+
     setIsLoading(true)
     
       fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBAX17nBJFg6o4XXPR5zeqGA_dM1JM5XrM' , 
@@ -50,6 +53,7 @@ const LoginForm = () => {
         alert(err.message)
       })
     setIsLogin(true)
+    ctx.changeMail(changedEmail)
   }
 
   return (
@@ -72,7 +76,7 @@ const LoginForm = () => {
         
         <div className='actions'>
           {!isLoading && <button onClick={submitHandler}>Login</button>}
-          {isLoading && <p>Signing Up...</p>}
+          {isLoading && <p>Signing in...</p>}
           
         </div>
       </form>

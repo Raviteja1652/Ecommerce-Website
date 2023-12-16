@@ -35,4 +35,4 @@ const EachItem = (props) => {
     );
 };
 
-export default EachItem;
+export default EachItem; 

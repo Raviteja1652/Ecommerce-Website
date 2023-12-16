@@ -36,4 +36,4 @@ function Black() {
   )
 }
 
-export default Black;
+export default Black; 

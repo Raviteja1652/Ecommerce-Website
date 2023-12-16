@@ -96,4 +96,4 @@ function MoviesApp() {
   );
 }
 
-export default MoviesApp;
+export default MoviesApp; 

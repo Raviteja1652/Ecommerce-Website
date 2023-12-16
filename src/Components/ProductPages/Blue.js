@@ -36,4 +36,4 @@ function Blue() {
   )
 }
 
-export default Blue
+export default Blue;

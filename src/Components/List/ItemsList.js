@@ -46,4 +46,4 @@ const ItemsList = () => {
     )
 };
 
-export default ItemsList;
+export default ItemsList; 

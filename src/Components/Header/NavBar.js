@@ -6,8 +6,7 @@ import { Link } from 'react-router-dom'
 
 const NavBar = (props) => {
     const ctx = useContext(cartContext)
-    const tokenId = ctx.token
-    const pos = !!tokenId
+    const isLoggedIn = ctx.isLoggedIn
     const clickHandler = () => {
         props.cartOnClick(true)
     };
@@ -20,15 +19,16 @@ const NavBar = (props) => {
         <>
             <Navbar bg="dark" expand='lg' variant="dark" fixed="top">
                 <Container>
-                    {/* {pos && <Navbar.Brand as={Link} to="/movies">Movies</Navbar.Brand>} */}
+                    {isLoggedIn && <Navbar.Brand as={Link} to="/movies">Movies</Navbar.Brand>}
                     <Navbar.Brand as={Link} to="/home">Home</Navbar.Brand>
-                    <Navbar.Brand as={Link} to="/">Store</Navbar.Brand>
+                    {isLoggedIn && <Navbar.Brand as={Link} to="/store">Store</Navbar.Brand>}
                     <Navbar.Brand as={Link} to="/about">About</Navbar.Brand>
-                    <Navbar.Brand as={Link} to="/contact">Contact Us</Navbar.Brand>
-                    <Navbar.Brand as={Link} to="/login">Login</Navbar.Brand>
-                    <Button variant="info" onClick={clickHandler}>cart
+                    {isLoggedIn && <Navbar.Brand as={Link} to="/contact">Contact Us</Navbar.Brand>}
+                    {!isLoggedIn && <Navbar.Brand as={Link} to="/login">Login</Navbar.Brand>}
+                    {isLoggedIn && <Navbar.Brand as={Link} to="/logout" onClick={ctx.logout}>Logout</Navbar.Brand>}
+                    {isLoggedIn && <Button variant="info" onClick={clickHandler}>cart
                         <span className="badge">{numberOfItemsInCart}</span>
-                    </Button>
+                    </Button>}
                 </Container>
             </Navbar>
         </>

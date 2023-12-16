@@ -35,4 +35,4 @@ function Yellow() {
   )
 }
 
-export default Yellow
+export default Yellow;
